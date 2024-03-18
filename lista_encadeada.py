@@ -28,30 +28,45 @@ class ListaContatos:
                 atual = atual.proximo
             atual.proximo = novo_contato
 
-
+#criando o método para quesquisar contatos
     def pesquisar_contato(self, nome):
         atual = self.primeiro
         while atual:
+#vai percorrer a lista procurando pelo nome fornecido
             if atual.nome == nome:
+#se encontrar o contato, o retorna
                 return atual
             atual = atual.proximo
+#senão, retorna none
         return None
 
+    #método de remoção de contato
     def remover_contato(self, nome):
         anterior = None
+    #a var anterior é definida como none.
         atual = self.primeiro
+    #ela será usada para rastrear o nó anterior ao nó atual
         while atual:
+    #inicia-se um loop enquanto o nó atual não for nulo
             if atual.nome == nome:
                 if anterior:
+    #verifica-se se o nó atual não é o primeiro nó da lista (nulo).
                     anterior.proximo = atual.proximo
+    #se não for, atualiza-se o ponteiro "próximo" do nó anterior para apontar para o próximo nó após o atual
                 else:
+    #se o nó atual for o primeiro da lista
                     self.primeiro = atual.proximo
+    #atualiza-se o ponteiro para apontar para o próximo nó após o nó atual
                 return True
+    #após a remoção do contato, retorna-se true para indicar que a operação foi concluida com êxito.
             anterior = atual
+    #atualiza-se a var "anterior" para que aponte para o nó atual
             atual = atual.proximo
+    #se avança para o próximo nó da lista ao atualizar a var "atual"
         return False
+    #caso o nome do contato não seja encontrado.
 
-#criar a lista de contatos
+#criar a variável lista de contatos
 lista_contatos = ListaContatos()
 
 #adicionar contatos
